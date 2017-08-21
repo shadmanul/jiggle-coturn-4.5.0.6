@@ -50,7 +50,7 @@ RUN wget -O turn.tar.gz \
     http://turnserver.open-sys.org/downloads/v${COTURN_VERSION}/turnserver-${COTURN_VERSION}.tar.gz     
 
 # unzip
-RUN tar -zxvf turn.tar.gz && /
+RUN tar -zxvf turn.tar.gz && \
     cd turnserver-* && \
     ./configure && \
     make && make install 
