@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  coturn:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: shadmanul/coturn:4.5.0.6
+    environment:
+      EXTERNAL_IP: 139.59.248.179
+    ports:
+      - "8000:3000"
+    volumes:
+      - "sqlite:/usr/local/var/db/turndb"
+      - "logs:/var/log/turnserver.log"
+    network_mode: "host"
+    restart: on-failure
+
+volumes:
+  sqlite:
+  logs:

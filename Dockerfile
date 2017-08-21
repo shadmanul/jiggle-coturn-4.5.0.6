@@ -39,3 +39,5 @@ RUN chmod +x /etc/service/turnserver/run
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+VOLUME /usr/local/var/db/turndb

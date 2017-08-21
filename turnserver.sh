@@ -1,5 +1,7 @@
 #!/bin/bash
 
+CONFIG=/usr/local/etc/turnserver.conf
+
 if [ -z $SKIP_AUTO_IP ] && [ -z $EXTERNAL_IP ]
 then
     if [ ! -z $USE_IPV4 ]
@@ -19,21 +21,22 @@ if [ ! -e /tmp/turnserver.configured ]
 then
     if [ -z $SKIP_AUTO_IP ]
     then
-        echo external-ip=$EXTERNAL_IP > /usr/local/etc/turnserver.conf
+        echo external-ip=$EXTERNAL_IP > $CONFIG
     fi
-    echo listening-port=$PORT >> /usr/local/etc/turnserver.conf
+    echo listening-port=$PORT >> $CONFIG
 
     if [ ! -z $LISTEN_ON_PUBLIC_IP ]
     then
-        echo listening-ip=$EXTERNAL_IP >> /usr/local/etc/turnserver.conf
+        echo listening-ip=$EXTERNAL_IP >> $CONFIG
     fi
 
     touch /tmp/turnserver.configured
 fi
 
-echo realm=lokkhi.io >> /usr/local/etc/turnserver.conf
-echo verbose >> /usr/local/etc/turnserver.conf
-echo fingerprint >> /usr/local/etc/turnserver.conf
-echo lt-cred-mech >> /usr/local/etc/turnserver.conf
+echo realm=lokkhi.io >> $CONFIG
+echo verbose >> $CONFIG
+echo fingerprint >> $CONFIG
+echo lt-cred-mech >> $CONFIG
+echo userdb=/usr/local/var/db/turndb >> $CONFIG
 
 exec /usr/local/bin/turnserver --no-cli >> /var/log/turnserver.log 2>&1
