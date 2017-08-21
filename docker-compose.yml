@@ -11,9 +11,6 @@ services:
     ports:
       - "3478:3478"
       - "3478:3478/udp"
-    volumes:
-      - "sqlite:/usr/local/var/db/turndb"
-      - "logs:/var/log/turnserver.log"
     network_mode: "host"
     restart: on-failure
 
