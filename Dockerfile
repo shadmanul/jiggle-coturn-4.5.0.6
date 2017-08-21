@@ -17,6 +17,8 @@ RUN apt-get update && apt-get dist-upgrade -y && \
     wget \
     make -y    
 
+RUN apt-get install sqlite3 libsqlite3-dev -y
+
 # Download the source tar
 RUN wget -O turn.tar.gz \
     http://turnserver.open-sys.org/downloads/v${COTURN_VERSION}/turnserver-${COTURN_VERSION}.tar.gz     
