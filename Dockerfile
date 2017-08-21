@@ -29,7 +29,6 @@ RUN tar -zxvf turn.tar.gz && \
 
 RUN groupadd turnserver
 RUN useradd -g turnserver turnserver
-RUN gdebi -n /tmp/coturn*.deb
 
 COPY turnserver.sh  /usr/local/etc/service/turnserver/run
 
