@@ -9,7 +9,8 @@ services:
     environment:
       EXTERNAL_IP: 139.59.248.179
     ports:
-      - "8000:3000"
+      - "3478:3478"
+      - "3478:3478/udp"
     volumes:
       - "sqlite:/usr/local/var/db/turndb"
       - "logs:/var/log/turnserver.log"
