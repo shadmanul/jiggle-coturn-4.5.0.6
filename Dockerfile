@@ -30,8 +30,10 @@ RUN tar -zxvf turn.tar.gz && \
 RUN groupadd turnserver
 RUN useradd -g turnserver turnserver
 
-COPY turnserver.sh  /usr/local/etc/service/turnserver/run
-RUN chmod +x /usr/local/etc/service/turnserver/run
+RUN mkdir /etc/service/turnserver
+
+COPY turnserver.sh /etc/service/turnserver/run
+RUN chmod +x /etc/service/turnserver/run
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
