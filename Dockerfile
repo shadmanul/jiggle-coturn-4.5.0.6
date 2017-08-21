@@ -17,8 +17,6 @@ RUN apt-get update && apt-get dist-upgrade -y && \
     wget \
     make -y    
 
-RUN apt-get install -y gdebi-core
-
 # Download the source tar
 RUN wget -O turn.tar.gz \
     http://turnserver.open-sys.org/downloads/v${COTURN_VERSION}/turnserver-${COTURN_VERSION}.tar.gz     
@@ -33,9 +31,7 @@ RUN groupadd turnserver
 RUN useradd -g turnserver turnserver
 RUN gdebi -n /tmp/coturn*.deb
 
-RUN mkdir /etc/service/turnserver
-
-COPY turnserver.sh /etc/service/turnserver/run
+COPY turnserver.sh  /usr/local/etc/service/turnserver/run
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
