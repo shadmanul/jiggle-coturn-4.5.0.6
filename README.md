@@ -3,20 +3,25 @@ Docker Turnserver
 
 A Docker container with the Coturn STUN and TURN server (https://github.com/coturn/coturn)
 
-This is currently running v4.4.5.3.
+Use docker compose to build and run container
+```bash
+docker-compose -p coturn up --build -d
+``` 
+
+This is currently running v4.5.0.6.
 Build the image using this command
 ```bash
-docker build -t shadmanul/turnserver:4.4.5.3 .
+docker build -t shadmanul/coturn:4.5.0.6 .
 ```
 
 ```bash
-docker container run -d --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.4.5.3
+docker container run -d --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.5.0.6
 ```
 
 This will use icanhazip (http://major.io/icanhazip-com-faq/) to determine your container's public IP address. If you don't wish to use icanhazip, or you wish to use an external IP address that doesn't match what icanhazip would see, you can specify it in the environment:
 
 ```bash
-docker container run -d -e EXTERNAL_IP=139.59.248.179 --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.4.5.3
+docker container run -d -e EXTERNAL_IP=139.59.248.179 --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.5.0.6
 ```
 
 Environment Parameters
