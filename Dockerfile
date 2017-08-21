@@ -45,6 +45,9 @@ RUN apt-get update && \
     libhiredis-dev \
     make -y    
 
+RUN apt-get install \
+    wget
+    
 # Download the source tar
 RUN wget -O turn.tar.gz \
     http://turnserver.open-sys.org/downloads/v${COTURN_VERSION}/turnserver-${COTURN_VERSION}.tar.gz     
