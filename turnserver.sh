@@ -37,6 +37,5 @@ echo realm=lokkhi.io >> $CONFIG
 echo verbose >> $CONFIG
 echo fingerprint >> $CONFIG
 echo lt-cred-mech >> $CONFIG
-echo userdb=/usr/local/var/db/turndb >> $CONFIG
 
 exec /usr/local/bin/turnserver --no-cli >> /var/log/turnserver.log 2>&1
