@@ -15,13 +15,26 @@ docker build -t shadmanul/coturn:4.5.0.6 .
 ```
 
 ```bash
-docker container run -d --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.5.0.6
+docker container run -d \
+        --name=turnserver \
+        --restart="on-failure:10" \
+        --net=host \
+        -p 3478:3478 \
+        -p 3478:3478/udp \
+        shadmanul/turnserver:4.5.0.6
 ```
 
 This will use icanhazip (http://major.io/icanhazip-com-faq/) to determine your container's public IP address. If you don't wish to use icanhazip, or you wish to use an external IP address that doesn't match what icanhazip would see, you can specify it in the environment:
 
 ```bash
-docker container run -d -e EXTERNAL_IP=139.59.248.179 --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.5.0.6
+docker container run -d \
+        -e EXTERNAL_IP=139.59.248.179 \
+        --name=turnserver \
+        --restart="on-failure:10" \
+        --net=host \
+        -p 3478:3478 \
+        -p 3478:3478/udp \
+        shadmanul/turnserver:4.5.0.6
 ```
 
 Environment Parameters
@@ -39,7 +52,10 @@ Authentication & Restart Coturn
 docker exec -it turnserver bash
 
 # add user
-turnadmin -a -u <username> -r <realm> -p <password>
+turnadmin -a \
+        -u <username> \
+        -r <realm> \
+        -p <password>
 
 # restart coturn
 service coturn restart
