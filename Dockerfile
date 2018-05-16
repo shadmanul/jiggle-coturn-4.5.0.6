@@ -3,7 +3,7 @@ MAINTAINER Md. Shadmanul Islam <shadmanulislam@gmail.com>
 
 # Set correct environment variables.
 ENV HOME /root
-ENV COTURN_VERSION 4.5.0.6
+ENV COTURN_VERSION 4.5.0.7
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
